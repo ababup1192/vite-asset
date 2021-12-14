@@ -47,7 +47,7 @@ subscriptions _ =
 view : Model -> Html Msg
 view model =
     div []
-        [ img [ src "src/favicon.svg" ] [], 
+        [ img [ src model.assets.favicon ] [], 
         h1 [] [ text "Echo Chat" ]
         , input
             [ type_ "text"
