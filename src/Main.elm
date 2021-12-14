@@ -9,12 +9,13 @@ import Html.Events exposing (..)
 type alias Model =
     { draft : String
     , messages : List String
+    , assets: { favicon: String }
     }
 
 
-init : () -> ( Model, Cmd Msg )
-init _ =
-    ( { draft = "", messages = [] }
+init : { favicon: String } -> ( Model, Cmd Msg )
+init assets =
+    ( { draft = "", messages = [], assets = assets }
     , Cmd.none
     )
 
@@ -61,7 +62,7 @@ view model =
         ]
 
 
-main : Program () Model Msg
+main : Program  { favicon: String }  Model Msg
 main =
     Browser.element
         { init = init
