@@ -9,13 +9,12 @@ import Html.Events exposing (..)
 type alias Model =
     { draft : String
     , messages : List String
-    , assets: { favicon: String }
     }
 
 
-init : { favicon: String } -> ( Model, Cmd Msg )
-init assets =
-    ( { draft = "", messages = [], assets = assets }
+init : () -> ( Model, Cmd Msg )
+init _ =
+    ( { draft = "", messages = [] }
     , Cmd.none
     )
 
@@ -47,7 +46,7 @@ subscriptions _ =
 view : Model -> Html Msg
 view model =
     div []
-        [ img [ src model.assets.favicon ] [], 
+        [ img [ src "/favicon.svg" ] [], 
         h1 [] [ text "Echo Chat" ]
         , input
             [ type_ "text"
@@ -62,7 +61,7 @@ view model =
         ]
 
 
-main : Program  { favicon: String }  Model Msg
+main : Program () Model Msg
 main =
     Browser.element
         { init = init
